@@ -4,7 +4,8 @@ import { client } from '../../../sanity/lib/client';
 import { groq } from 'next-sanity';
 import BlogContent from '@/components/BlogContent';
 
-const query = groq`*[_type == 'post']{
+const query = groq`
+  *[_type == 'post']{
   ...,
   author->,
     categories[]->
@@ -15,7 +16,7 @@ export default async function Home() {
   return (
     <div>
       <Hero />
-      <BlogContent posts={posts}/>
+      <BlogContent posts={posts} />
     </div>
   );
 }
